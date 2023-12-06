@@ -31,7 +31,7 @@
 #define brocheD7_arduino_vers_brocheCE_ecranNokia     7
 #define brocheD8_arduino_vers_brocheRST_ecranNokia    8
 
-// Instanciation de cette librairie, de la sorte : "Adafruit_PCD8544(CLK,DIN,D/C,CE,RST);"
+// Instanciation de cette librairie, de telle sorte : "Adafruit_PCD8544(CLK,DIN,D/C,CE,RST);"
 Adafruit_PCD8544 ecranNokia5110 = Adafruit_PCD8544(brocheD4_arduino_vers_brocheCLK_ecranNokia, brocheD5_arduino_vers_brocheDIN_ecranNokia, brocheD6_arduino_vers_brocheDC_ecranNokia, brocheD7_arduino_vers_brocheCE_ecranNokia, brocheD8_arduino_vers_brocheRST_ecranNokia);
 
 
@@ -77,6 +77,7 @@ void loop() {
   //    - println(texte) permet d'écrire du texte à la position courante du "curseur", puis de faire un saut à la ligne (déplace le curseur vers le bas pour la ligne suivante, donc)
   //    - print(nombre, base) permet d'écrire un nombre à l'écran, dans la base indiquée, avec HEX (hexadécimal) pour la base 16, DEC (décimal) pour base 10, OCT (octal) pour base 8, et BIN (binaire) pour la base 2
   //      exemples : print(0xFF, HEX) affichera "FF", et print(0xFF, DEC) affichera 255 (puisque 0xFF en hexadécimal/base16 vaut 255 en décimal/base10)
+  //    - setRotation(nombreDeFois90Degres) permet de faire tourner l'écran, dans le sens inverse des aiguilles d'une montre (avec 0 = aucune rotation, 1 = 90° de rotation, etc)
   //    - certains accents s'affichent mal à l'écran, c'est pourquoi je les ai enlevé (et mis par exemple "Bonjour a tous", à la place de "Bonjour à tous"
 
   
@@ -97,7 +98,55 @@ void loop() {
   ecranNokia5110.println("Salut a tous !");
   ecranNokia5110.display();
   delay(2000);
+
   
+  // Affiche du texte de taille 2 et 3
+  ecranNokia5110.clearDisplay();
+  ecranNokia5110.setTextColor(BLACK);
+  ecranNokia5110.setCursor(0,0);
+  ecranNokia5110.setTextSize(2);
+  ecranNokia5110.println("Taille 2");
+  ecranNokia5110.display();
+  delay(2000);
+  ecranNokia5110.clearDisplay();
+  ecranNokia5110.setCursor(0,0);
+  ecranNokia5110.setTextSize(3);
+  ecranNokia5110.println("Taille 3");
+  ecranNokia5110.display();
+  delay(2000);
+
+
+  // Affiche le nombre "0xFF", en différent format (=FF en hexadécimal, =255 en décimal, =377 en octal, et =1111 1111 en binaire)
+  int nombre = 0xFF;
+  ecranNokia5110.clearDisplay();
+  ecranNokia5110.setTextSize(1);
+  ecranNokia5110.setCursor(0,0);
+  ecranNokia5110.print("HEX = ");
+  ecranNokia5110.println(nombre, HEX);
+  ecranNokia5110.print("DEC = ");
+  ecranNokia5110.println(nombre, DEC);
+  ecranNokia5110.print("OCT = ");
+  ecranNokia5110.println(nombre, OCT);
+  ecranNokia5110.print("BIN = ");
+  ecranNokia5110.println(nombre, BIN);
+  ecranNokia5110.display();
+  delay(2000);
+
+
+  // Rotation de l'écran d'affichage, en se servant de la fonction "setRotation(nbreDeFois90degres)"
+  // Nota 1 : le sens de rotation est l'inverse de celui des aiguilles d'une montre
+  // Nota 2 : pour simplifier, setRotation(0) = aucune rotation, setRotation(1) = 90°, setRotation(2) = 180°, et setRotation(3) = 270° de rotation
+  for (int nbreDeFois90DegresAtourner = 0 ; nbreDeFois90DegresAtourner < 4 ; nbreDeFois90DegresAtourner++) {
+    ecranNokia5110.clearDisplay();
+    ecranNokia5110.setRotation(nbreDeFois90DegresAtourner);
+    ecranNokia5110.setCursor(0,0);
+    ecranNokia5110.println("Rotation de l'ecran (et donc du texte)");
+    ecranNokia5110.display();
+    delay(2000);
+  }
+
+
+  // Et on reboucle à l'infini (après avoir remis l'écran dans le bon sens, bien entendu !)
+  ecranNokia5110.setRotation(0);
   
-    
 }
