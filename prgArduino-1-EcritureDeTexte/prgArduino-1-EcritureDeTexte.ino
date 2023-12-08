@@ -77,7 +77,8 @@ void loop() {
   //    - println(texte) permet d'écrire du texte à la position courante du "curseur", puis de faire un saut à la ligne (déplace le curseur vers le bas pour la ligne suivante, donc)
   //    - print(nombre, base) permet d'écrire un nombre à l'écran, dans la base indiquée, avec HEX (hexadécimal) pour la base 16, DEC (décimal) pour base 10, OCT (octal) pour base 8, et BIN (binaire) pour la base 2
   //      exemples : print(0xFF, HEX) affichera "FF", et print(0xFF, DEC) affichera 255 (puisque 0xFF en hexadécimal/base16 vaut 255 en décimal/base10)
-  //    - setRotation(nombreDeFois90Degres) permet de faire tourner l'écran, dans le sens inverse des aiguilles d'une montre (avec 0 = aucune rotation, 1 = 90° de rotation, etc)
+  //    - setRotation(nombreDeFois90Degres) permet de faire tourner le sens d'écriture à l'écran, dans le sens inverse des aiguilles d'une montre
+  //      (avec 0 = aucune rotation, 1 = 90° de rotation, 2 = 180°, et 3 = 270°)
   //    - certains accents s'affichent mal à l'écran, c'est pourquoi je les ai enlevé (et mis par exemple "Bonjour a tous", à la place de "Bonjour à tous"
 
   
@@ -127,17 +128,18 @@ void loop() {
   delay(3000);
 
 
-  // Rotation de l'écran d'affichage, en se servant de la fonction "setRotation(nbreDeFois90degres)"
+  // Rotation du sens d'écriture à l'écran, en se servant de la fonction "setRotation(nbreDeFois90degres)"
   // Nota 1 : le sens de rotation est l'inverse de celui des aiguilles d'une montre
   // Nota 2 : pour simplifier, setRotation(0) = aucune rotation, setRotation(1) = 90°, setRotation(2) = 180°, et setRotation(3) = 270° de rotation
+  ecranNokia5110.clearDisplay();
   for (int nbreDeFois90DegresAtourner = 0 ; nbreDeFois90DegresAtourner < 4 ; nbreDeFois90DegresAtourner++) {
-    ecranNokia5110.clearDisplay();
     ecranNokia5110.setRotation(nbreDeFois90DegresAtourner);
     ecranNokia5110.setCursor(0,0);
-    ecranNokia5110.println("Rotation de l'ecran (et donc du texte)");
-    ecranNokia5110.display();
-    delay(3000);
+    ecranNokia5110.print("Rota=");
+    ecranNokia5110.print(nbreDeFois90DegresAtourner);
   }
+  ecranNokia5110.display();
+  delay(3000);
 
 
   // Et on reboucle à l'infini (après avoir remis l'écran dans le bon sens, bien entendu !)
