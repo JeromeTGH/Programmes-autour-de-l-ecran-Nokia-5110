@@ -81,39 +81,33 @@ void loop() {
   //    - certains accents s'affichent mal à l'écran, c'est pourquoi je les ai enlevé (et mis par exemple "Bonjour a tous", à la place de "Bonjour à tous"
 
   
-  // Affiche le texte "Bonjour à tous" à l'écran
+  // Affiche le texte "Bonjour à tous" et "bienvenue" à l'écran
   ecranNokia5110.clearDisplay();
   ecranNokia5110.setTextSize(1);
-  ecranNokia5110.setTextColor(BLACK);
-  ecranNokia5110.setCursor(0,20);
-  ecranNokia5110.println("Salut a tous !");
+  ecranNokia5110.setTextColor(BLACK);           // Texte en "noir sur fond blanc"
+  ecranNokia5110.setCursor(0,10);
+  ecranNokia5110.println("Salut a tous,");
+  ecranNokia5110.setTextColor(WHITE, BLACK);    // Texte en "blanc sur fond noir"
+  ecranNokia5110.setCursor(0,30);
+  ecranNokia5110.println("et bienvenue !");
   ecranNokia5110.display();
-  delay(2000);
-
-
-  // Affiche le même texte, mais en "blanc sur fond noir" (mode "inversé")
-  ecranNokia5110.clearDisplay();
-  ecranNokia5110.setTextColor(WHITE, BLACK); // 'inverted' text
-  ecranNokia5110.setCursor(0,20);
-  ecranNokia5110.println("Salut a tous !");
-  ecranNokia5110.display();
-  delay(2000);
+  delay(3000);
 
   
-  // Affiche du texte de taille 2 et 3
+  // Affiche du texte en taille 1, 2, 3, et 4
   ecranNokia5110.clearDisplay();
   ecranNokia5110.setTextColor(BLACK);
   ecranNokia5110.setCursor(0,0);
+  ecranNokia5110.setTextSize(1);
+  ecranNokia5110.print("1");
   ecranNokia5110.setTextSize(2);
-  ecranNokia5110.println("Taille 2");
-  ecranNokia5110.display();
-  delay(2000);
-  ecranNokia5110.clearDisplay();
-  ecranNokia5110.setCursor(0,0);
+  ecranNokia5110.print("2");
   ecranNokia5110.setTextSize(3);
-  ecranNokia5110.println("Taille 3");
+  ecranNokia5110.print("3");
+  ecranNokia5110.setTextSize(4);
+  ecranNokia5110.print("4");
   ecranNokia5110.display();
-  delay(2000);
+  delay(3000);
 
 
   // Affiche le nombre "0xFF", en différent format (=FF en hexadécimal, =255 en décimal, =377 en octal, et =1111 1111 en binaire)
@@ -130,7 +124,7 @@ void loop() {
   ecranNokia5110.print("BIN = ");
   ecranNokia5110.println(nombre, BIN);
   ecranNokia5110.display();
-  delay(2000);
+  delay(3000);
 
 
   // Rotation de l'écran d'affichage, en se servant de la fonction "setRotation(nbreDeFois90degres)"
@@ -142,7 +136,7 @@ void loop() {
     ecranNokia5110.setCursor(0,0);
     ecranNokia5110.println("Rotation de l'ecran (et donc du texte)");
     ecranNokia5110.display();
-    delay(2000);
+    delay(3000);
   }
 
 
