@@ -71,8 +71,8 @@ void loop() {
   //    - display() permet d'envoyer le contenu de la mémoire tampon de l'écran à l'écran
   //    - drawRect(posX, posY, largeur, hauteur, couleur) permet de dessiner un rectangle (son contour) à l'écran, depuis la position (X,Y), avec pour dimension largeur x hauteur
   //    - fillRect(posX, posY, largeur, hauteur, couleur) fait la même chose que drawRect, mais rempli (noirci) à l'intérieur
-  //    - drawRoundRect(posX, posY, largeur, hauteur, couleur) permet de dessiner un rectangle à bords arrondis (son contour) à l'écran, depuis la position (X,Y), avec pour dimension largeur x hauteur
-  //    - fillRoundRect(posX, posY, largeur, hauteur, couleur) fait la même chose que drawRoundRect, mais rempli (noirci) à l'intérieur
+  //    - drawRoundRect(posX, posY, largeur, hauteur, nbPixelsAngles, couleur) permet de dessiner un rectangle à bords arrondis (son contour) à l'écran, depuis la position (X,Y), avec dimensions largeur x hauteur, et des angles arrondis de nbPixelsAngles
+  //    - fillRoundRect(posX, posY, largeur, hauteur, nbPixelsAngles, couleur) fait la même chose que drawRoundRect, mais rempli (noirci) à l'intérieur
   //    - drawCircle(posCentreX, posCentreY, rayon, couleur) permet de dessiner un cercle (son contour) à l'écran, avec pour centre la position (X,Y), et un rayon donné
   //    - fillCircle(posCentreX, posCentreY, rayon, couleur) fait la même chose que drawCircle, mais rempli (noirci) à l'intérieur
   //    - drawTriangle(Xhaut, Yhaut, Xgauche, Ygauche, Xdroite, Ydroite, couleur) permet de dessiner un triangle (son contour) à l'écran, avec (Xhaut, Yhaut) comme coordonnées pour le sommet, (Xgauche, Ygauche) pour l'angle gauche, et idem pour la droite
